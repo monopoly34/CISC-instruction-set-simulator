@@ -1,11 +1,8 @@
 #include "CPU.h"
-#include <iostream>
-
 #include "InstructionFetch.h"
 #include "DecodeInstruction.h"
 #include "Execute.h"
 #include "LoadStore.h"
-#include "Interfaces.h"
 
 // bob the builder (constructor)
 CPU::CPU(IMemoryInterface *memInterface) {
