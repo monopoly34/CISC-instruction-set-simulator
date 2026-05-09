@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.2)
+cmake_minimum_required(VERSION 4.1.2)
 project(CISC_instruction_set_simulator)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -10,6 +10,10 @@ add_executable(CISC_instruction_set_simulator
         CPU.h
         Memory.cpp
         Memory.h
+        Memory.h
+        Registers.cpp
+        Registers.h
+)
         InstructionFetch.cpp
         InstructionFetch.h
         DecodeInstruction.cpp
