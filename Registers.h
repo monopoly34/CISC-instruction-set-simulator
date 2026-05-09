@@ -7,12 +7,14 @@
 #include <iostream>
 
 class Registers {
+private:
     static constexpr int RegisterCount = 8;
     std::vector<uint16_t> registers;
     uint16_t IP; // Instruction Pointer
     uint16_t FLAGS; // 0 -> Z, 1 -> E, 2 -> G
     uint16_t SP; // Stack Pointer
 
+public:
     enum FlagsBits {
         ZERO = 0x001,
         EQUAL = 0x002,
@@ -29,6 +31,7 @@ public:
     bool getFlag(FlagsBits flag) const;
     uint16_t getFlags() const;
     void printRegisters() const;
+    void incrementIP();
 };
 
 

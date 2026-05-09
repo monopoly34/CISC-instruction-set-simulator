@@ -57,6 +57,10 @@ void Registers::printRegisters() const {
     std::cout << "FLAGS: 0x" << std::hex << std::setw(3) << std::setfill('0') << FLAGS << std::endl;
 }
 
+void Registers::incrementIP() {
+    IP += 2;
+}
+
 
 
 

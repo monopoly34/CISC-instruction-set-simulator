@@ -14,6 +14,7 @@ bool Memory::write(uint16_t address, uint16_t value) {
 }
 
 // Read one word
+uint16_t Memory::read(uint16_t address) {
     uint16_t Memory::read(uint16_t address) {
     if (address % 2 != 0) {
         std::cerr << "Address is not even!" << std::endl;
