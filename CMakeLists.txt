@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.2)
+cmake_minimum_required(VERSION 4.1.2)
 project(CISC_instruction_set_simulator)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -18,4 +18,6 @@ add_executable(CISC_instruction_set_simulator
         LoadStore.h
         Execute.cpp
         Execute.h
-        Interfaces.h)
+        Interfaces.h
+        Registers.cpp
+        Registers.h)
