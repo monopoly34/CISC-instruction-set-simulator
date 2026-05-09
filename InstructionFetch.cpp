@@ -2,7 +2,8 @@
 #include <iostream>
 #include <cstdint>
 #include <iomanip>
-
+#include <thread>
+#include <chrono>
 
 using namespace std;
 
@@ -47,4 +48,14 @@ void InstructionFetch::set_program_counter(uint16_t address) {
         address--;
     }
     program_counter = address;
+}
+
+void InstructionFetch::run_loop() {
+    while (true) {
+        // ia o instructiune si o impinge in coada lui Decode
+        instruction_fetch();
+
+        // delay
+        this_thread::sleep_for(chrono::milliseconds(1000));
+    }
 }

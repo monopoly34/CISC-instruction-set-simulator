@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 // constructor
 LoadStore::LoadStore(IMemoryInterface *memory) : memory_interface(memory) {
 
@@ -21,7 +23,7 @@ uint64_t LoadStore::request_to_memory(uint16_t address, MemOperations op, uint16
 
             // punem cele 4 cuvinte intr un singur numar de 64 de biti
             for (size_t i = 0; i < words.size(); i++) {
-                result |= (static_cast<uint64_t>(words[i]) << (i * 16))
+                result |= (static_cast<uint64_t>(words[i]) << (i * 16));
             }
             break;
 
