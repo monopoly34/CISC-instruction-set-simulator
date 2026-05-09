@@ -13,7 +13,9 @@ add_executable(CISC_instruction_set_simulator
         Memory.h
         Registers.cpp
         Registers.h
-)
+        Memory.cpp
+        Memory.cpp
+        Execute.cpp
         InstructionFetch.cpp
         InstructionFetch.h
         DecodeInstruction.cpp
