@@ -28,6 +28,9 @@ public:
 
     // folosita de Execute cand avem salturi
     void set_program_counter(uint16_t address);
+
+    // functie care va rula pe thread-ul de Fetch
+    void run_loop();
 };
 
 #endif //CISC_INSTRUCTION_SET_SIMULATOR_INSTRUCTIONFETCH_H

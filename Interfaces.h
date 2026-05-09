@@ -13,6 +13,27 @@ enum class MemOperations {
     STORE_16  // pentru Execute (scriere date)
 };
 
+enum class OperandType {
+    NULL_OP = 0x00,
+    IMM = 0x01,
+    ADDR = 0x02,
+    SP = 0x03,
+    STACK_BASE = 0x04,
+    STACK_SIZE = 0x05,
+    REG = 0x08,
+    ADDR_R = 0x18
+};
+
+// pachetul care va fi trimis catre Execute
+struct DecodedInstruction {
+    uint8_t opcode;
+    uint8_t src1_type;
+    uint8_t src2_type;
+
+    // pentru a sti cu cat avanseaza PC
+    uint8_t size_in_words;
+};
+
 // interfata catre memoria externa (folosita de LoadStore)
 class IMemoryInterface {
 public:
@@ -45,6 +66,6 @@ public:
 class IExecuteInterface {
 public:
     virtual ~IExecuteInterface() = default;
-    virtual void execute_instruction() = 0;
+    virtual void execute_instruction(const DecodedInstruction &instruction) = 0;
 };
 #endif //CISC_INSTRUCTION_SET_SIMULATOR_INTERFACES_H

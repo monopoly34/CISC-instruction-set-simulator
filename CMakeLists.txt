@@ -24,5 +24,6 @@ add_executable(CISC_instruction_set_simulator
         LoadStore.h
         Execute.cpp
         Execute.h
-        Interfaces.h)
+        Interfaces.h
+        ThreadSafeQueue.h)
 
