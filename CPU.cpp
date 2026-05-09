@@ -1,14 +1,11 @@
 #include "CPU.h"
-#include <iostream>
-
 #include "InstructionFetch.h"
 #include "DecodeInstruction.h"
 #include "Execute.h"
 #include "LoadStore.h"
-#include "Interfaces.h"
 
 // bob the builder (constructor)
-CPU::CPU(IMemoryInterface *memInterface) {
+CPU::CPU(IMemoryInterface *memInterface) : current_cycle(0) {
     // LoadStore este conectat la memoria externa prin interfata acesteia
     loadStoreStage = new LoadStore(memInterface);
 
@@ -30,8 +27,16 @@ CPU::~CPU() {
     delete loadStoreStage;
 }
 
-void CPU::clock_cycle() {
-    fetchStage -> instruction_fetch();
+void CPU::tick() {
+    current_cycle++;
+
+    if (fetchStage) {
+        fetchStage->instruction_fetch();
+    }
+}
+
+uint64_t CPU::get_current_cycle() const {
+    return current_cycle;
 }
 
 void CPU::execute(DecodeInstruction &inst) {
@@ -64,3 +69,14 @@ void CPU::execute(DecodeInstruction &inst) {
 void CPU::executeADD(const DecodeInstruction &inst) {
     uint16_t var1 = registers.getR
 }
+void CPU::boot_pipeline() {
+    pipeline.emplace_back(&DecodeInstruction::run_loop, decodeStage);
+    pipeline.emplace_back(&InstructionFetch::run_loop, fetchStage);
+
+    for (auto& t: pipeline) {
+        if (t.joinable()) {
+            t.join();
+        }
+    }
+}
+

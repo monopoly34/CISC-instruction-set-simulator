@@ -10,6 +10,12 @@ add_executable(CISC_instruction_set_simulator
         CPU.h
         Memory.cpp
         Memory.h
+        Memory.h
+        Registers.cpp
+        Registers.h
+        Memory.cpp
+        Memory.cpp
+        Execute.cpp
         InstructionFetch.cpp
         InstructionFetch.h
         DecodeInstruction.cpp
@@ -21,3 +27,5 @@ add_executable(CISC_instruction_set_simulator
         Interfaces.h
         Registers.cpp
         Registers.h)
+        ThreadSafeQueue.h)
+

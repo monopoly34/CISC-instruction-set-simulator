@@ -21,6 +21,7 @@ public:
         GREATER = 0x004,
     };
 
+public:
     Registers() : registers(RegisterCount, 0), IP(0), FLAGS(0), SP(0xFFF) {}
     void setRegister(int reg, uint16_t value);
     uint16_t getRegister(int reg) const;

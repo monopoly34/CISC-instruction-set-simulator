@@ -3,6 +3,10 @@
 #include "Memory.h"
 #include "Registers.h"
 
+#include <cstdint>
+#include <thread>
+#include <vector>
+
 // forward declarations
 class InstructionFetch;
 class DecodeInstruction;
@@ -21,6 +25,9 @@ class CPU {
     uint16_t src1;
     uint16_t src2;
 
+    uint64_t current_cycle;
+
+    std::vector<std::thread> pipeline;
 public:
     // constructor (the only parameter is the extern memory interface)
     CPU(IMemoryInterface *memInterface);
@@ -51,6 +58,13 @@ private:
     void executePUSH(const DecodeInstruction &inst);
     void executePOP(const DecodeInstruction &inst);
 
+    // functie carea avanseaza clock ul cu un ciclu
+    void tick();
+
+    // functie pentru a vedea clock ul curent
+    uint64_t get_current_cycle() const;
+
+    void boot_pipeline();
 };
 
 #endif //CISC_INSTRUCTION_SET_SIMULATOR_CPU_H
